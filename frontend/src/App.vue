@@ -86,7 +86,7 @@ async function handleDelete(taskId) {
   try {
     await deleteTask(taskId);
     tasks.value = tasks.value.filter((task) => task.id !== taskId);
-    success.value = "Задача удалена";
+    success.value = "Задача удалена!!!";
   } catch (err) {
     error.value = err.message;
   }
