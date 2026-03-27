@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap");
+
+:root {
+  --bg-start: #f5eee4;
+  --bg-end: #e2f0ef;
+  --panel: #fffffff2;
+  --text: #1c2a34;
+  --muted: #58707c;
+  --accent: #137a6f;
+  --accent-hover: #0f665d;
+  --danger: #b23a45;
+  --border: #d3dddb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", "Trebuchet MS", sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 20% 20%, #f9f3eb 0, transparent 38%),
+    radial-gradient(circle at 85% 10%, #daf1ef 0, transparent 35%),
+    linear-gradient(160deg, var(--bg-start), var(--bg-end));
+}
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.panel {
+  width: min(920px, 100%);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 20px 40px #0e2b2a14;
+  animation: rise 360ms ease-out;
+}
+
+.hero {
+  margin-bottom: 16px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+h1 {
+  margin: 8px 0 4px;
+  font-size: clamp(1.3rem, 2.8vw, 2rem);
+}
+
+.meta {
+  margin: 0;
+  color: var(--muted);
+}
+
+.task-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #ffffff;
+  color: var(--text);
+}
+
+textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+button {
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px 14px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 180ms ease;
+}
+
+button:hover {
+  background: var(--accent-hover);
+}
+
+button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.message {
+  margin: 6px 0 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+.message.error {
+  color: #7a1d22;
+  background: #ffe7ea;
+  border: 1px solid #ffc9cf;
+}
+
+.message.success {
+  color: #15574f;
+  background: #dff9f3;
+  border: 1px solid #b8f0e4;
+}
+
+.task-list {
+  margin-top: 14px;
+}
+
+.task-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.task-list li {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+  animation: fade-slide 260ms ease-out;
+}
+
+.task-list li.done .title {
+  text-decoration: line-through;
+  color: #6e7f88;
+}
+
+.view-mode,
+.edit-mode {
+  display: grid;
+  gap: 10px;
+}
+
+.task-content {
+  display: grid;
+  gap: 6px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.description {
+  margin: 0;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+button.ghost {
+  background: #fff;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+button.ghost:hover {
+  background: #f4f8f7;
+}
+
+button.danger {
+  background: #fff2f4;
+  color: var(--danger);
+  border-color: #f5c4cb;
+}
+
+button.danger:hover {
+  background: #ffdfe4;
+}
+
+.placeholder {
+  margin: 8px 0;
+  color: var(--muted);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-slide {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 780px) {
+  .task-form {
+    grid-template-columns: 1fr 1fr auto;
+    align-items: end;
+  }
+
+  .task-form label:last-of-type {
+    grid-column: 1 / span 2;
+  }
+
+  .task-form button {
+    align-self: start;
+    margin-top: 27px;
+  }
+}
